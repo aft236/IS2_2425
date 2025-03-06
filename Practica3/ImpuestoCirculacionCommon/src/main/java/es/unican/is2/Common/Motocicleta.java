@@ -11,7 +11,7 @@ public class Motocicleta extends Vehiculo {
 
 	public Motocicleta(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor, int cilindrada) {
 		super(id, matricula, fechaMatriculacion, motor);
-		//TODO
+		this.cilindrada = cilindrada;
 	}
 
 	/**
