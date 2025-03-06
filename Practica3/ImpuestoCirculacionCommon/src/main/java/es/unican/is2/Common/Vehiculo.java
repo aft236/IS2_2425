@@ -17,7 +17,9 @@ public abstract class Vehiculo {
 
 	// TODO
 	public Vehiculo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor) {
-		// TODO
+		this.matricula = matricula;
+		this.fechaMatriculacion = fechaMatriculacion;
+		this.motor = motor;
 	}
 
 	/**
@@ -47,7 +49,7 @@ public abstract class Vehiculo {
 	public long getId() {
 		return id;
 	}
-
+	
 	// TODO
 	public abstract double precioImpuesto();
 }
