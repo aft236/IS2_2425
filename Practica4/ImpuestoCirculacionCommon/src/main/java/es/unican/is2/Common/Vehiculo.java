@@ -50,7 +50,6 @@ public abstract class Vehiculo {
 		return id;
 	}
 	
-	// TODO
 	public abstract double precioImpuesto();
 }
 
