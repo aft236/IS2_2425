@@ -15,7 +15,6 @@ public abstract class Vehiculo {
 	private LocalDate fechaMatriculacion;
 	private TipoMotor motor;
 
-	// TODO
 	public Vehiculo(long id, String matricula, LocalDate fechaMatriculacion, TipoMotor motor) {
 		this.matricula = matricula;
 		this.fechaMatriculacion = fechaMatriculacion;
@@ -50,6 +49,6 @@ public abstract class Vehiculo {
 		return id;
 	}
 	
-	public abstract double precioImpuesto();
+	public abstract double precioImpuesto() throws OperacionNoValidaException;
 }
 

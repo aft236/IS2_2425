@@ -2,6 +2,7 @@ package es.unican.is2.Business;
 
 import es.unican.is2.DAO.ContribuyentesDAO;
 
+
 import es.unican.is2.DAO.VehiculosDAO;
 import es.unican.is2.Common.Contribuyente;
 import es.unican.is2.Common.DataAccessException;

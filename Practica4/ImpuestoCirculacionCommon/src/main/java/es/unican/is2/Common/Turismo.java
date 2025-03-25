@@ -24,6 +24,23 @@ public class Turismo extends Vehiculo {
 
 	@Override
 	public double precioImpuesto() {
+		
+		int añosVehiculo = Year.now().getValue() - super.getFechaMatriculacion().getYear();
+
+		// Si la fecha de matriculación aún no ha pasado en este año, restamos 1
+		if (LocalDate.now().isBefore(super.getFechaMatriculacion().plusYears(añosVehiculo))) {
+		    añosVehiculo--;
+		}
+		
+		if (potencia <= 0) {
+			throw new OperacionNoValidaException("La potencia tiene que ser mayor que 0");
+		}
+		
+		if (super.getFechaMatriculacion().isAfter(LocalDate.now())) {
+			throw new OperacionNoValidaException("La fecha de matriculacion tiene que ser mayor que hoy.");
+		}
+		
+			
 		double precio = 0;
 		if (potencia < 8) {
 			precio = 25;
@@ -37,8 +54,7 @@ public class Turismo extends Vehiculo {
 			precio = 223;
 		}
 		
-		int añosVehiculo = Year.now().getValue() - super.getFechaMatriculacion().getYear();
-		if (añosVehiculo > 25) {
+		if (añosVehiculo >= 25) {
 			precio = 0;
 		} else if (super.getMotor() == TipoMotor.ELECTRICO) {
 			precio = precio * 0.25; // 75% de descuento

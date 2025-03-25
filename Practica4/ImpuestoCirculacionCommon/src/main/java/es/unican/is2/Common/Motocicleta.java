@@ -33,12 +33,26 @@ public class Motocicleta extends Vehiculo {
 			precio = 30;
 		} else if (500 < cilindrada && cilindrada <= 1000) {
 			precio = 60;
-		} else if (100 < cilindrada) {
+		} else if (1000 < cilindrada) {
 			precio = 120;
 		}
-		
+
 		int añosVehiculo = Year.now().getValue() - super.getFechaMatriculacion().getYear();
-		if (añosVehiculo > 25) {
+		
+		// Si la fecha de matriculación aún no ha pasado en este año, restamos 1
+		if (LocalDate.now().isBefore(super.getFechaMatriculacion().plusYears(añosVehiculo))) {
+			añosVehiculo--;
+		}
+		
+		if (cilindrada <= 0) {
+			throw new OperacionNoValidaException("La cilindrada tiene que ser mayor que 0");
+		}
+		
+		if (super.getFechaMatriculacion().isAfter(LocalDate.now())) {
+			throw new OperacionNoValidaException("La fecha de matriculacion tiene que ser mayor que hoy.");
+		}
+		
+		if (añosVehiculo >= 25) {
 			precio = 0;
 		} else if (super.getMotor() == TipoMotor.ELECTRICO) {
 			precio = precio * 0.25; // 75% de descuento
@@ -47,7 +61,7 @@ public class Motocicleta extends Vehiculo {
 		} else if (super.getMotor() == TipoMotor.GAS && añosVehiculo <= 1) {
 			precio = precio * 0.5;
 		}
-		
+
 		return precio;
 	}
 

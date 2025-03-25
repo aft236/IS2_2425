@@ -67,7 +67,7 @@ public class Contribuyente {
      * a pagar por el contribuyente debido a todos sus vehiculos
      * @return valor total del impuesto de circulaci�n
      */
-    public double totalImpuestoCirculacion() {
+    public double totalImpuestoCirculacion() throws DataAccessException {
     	double total=0.0;
     	for (Vehiculo v: vehiculos) {
     		total+=v.precioImpuesto();
