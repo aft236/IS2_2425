@@ -19,6 +19,13 @@ public class CuentaAhorro extends Cuenta {
 	}
 	
 	// REFACTORIZADO
+	private void validarCantidad(double cantidad) throws datoErroneoException {
+	    if (cantidad <= 0) {
+	        throw new datoErroneoException("No se puede ingresar/retirar una cantidad negativa");
+	    }
+	}
+	
+	// REFACTORIZADO
 	public void nuevoMovimiento(String concepto, double cantidad) {
 		Movimiento m = new Movimiento();
 		m.setF(LocalDateTime.now());
@@ -29,8 +36,7 @@ public class CuentaAhorro extends Cuenta {
 	
 	// REFACTORIZADO
 	public void nuevoRetiro(String concepto, double cantidad) throws saldoInsuficienteException {
-		if (cantidad <= 0)
-	        throw new datoErroneoException("No se puede retirar una cantidad negativa");
+		validarCantidad(cantidad);
 	    if (getSaldo() < cantidad)
 	        throw new saldoInsuficienteException("Saldo insuficiente");
 
@@ -42,8 +48,7 @@ public class CuentaAhorro extends Cuenta {
 	}
 
 	public void ingresar(double x) throws datoErroneoException {
-		if (x <= 0)
-			throw new datoErroneoException("No se puede ingresar una cantidad negativa");
+		validarCantidad(x);
 		
 		nuevoMovimiento("Ingreso en efectivo", x);
 	}
@@ -53,8 +58,7 @@ public class CuentaAhorro extends Cuenta {
 	}
 
 	public void ingresar(String concepto, double x) throws datoErroneoException {
-		if (x <= 0)
-	        throw new datoErroneoException("No se puede ingresar una cantidad negativa");
+		validarCantidad(x);
 		
 	    nuevoMovimiento(concepto, x);;
 	}
