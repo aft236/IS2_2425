@@ -11,12 +11,18 @@ public class Valor {
 	private int numAcciones;
 	private double cotizacion;
 	
+	/*
+     * WMC = 1
+     * */
 	public Valor(String entidad, int numAcciones, double cotizacionActual) {
 		this.entidad = entidad;
 		this.numAcciones = numAcciones;
 		this.cotizacion = cotizacionActual;
 	}
 	
+	/*
+     * WMC = 1
+     * */
 	public int getNumValores() {
 		return numAcciones;
 	}
@@ -25,18 +31,30 @@ public class Valor {
 		this.numAcciones = numValores;
 	}
 
+	/*
+     * WMC = 1
+     * */
 	public double getCotizacion() {
 		return cotizacion;
 	}
 	
+	/*
+     * WMC = 1
+     * */
 	public void setCotizacion(double cotizacion) {
 		this.cotizacion = cotizacion;
 	}
 
+	/*
+     * WMC = 1
+     * */
 	public String getEntidad() {
 		return entidad;
 	}
 	
+	/*
+     * WMC = 1
+     * */
 	@Override
 	public boolean equals(Object obj) {
 		Valor other = (Valor)obj;
